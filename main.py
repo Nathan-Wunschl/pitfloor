@@ -31,7 +31,7 @@ with open("Values.json") as j:
 
 types = ('.mp3', '.aac', '.ogg', '.flac', '.m4a', '.wav', '.aiff', '.aif')
 
-c = sqlite3.connect(db)
+c = sqlite3.connect(db + "sql.db")
 c.execute("CREATE TABLE IF NOT EXISTS albums ( id INTEGER PRIMARY KEY AUTOINCREMENT, artist TEXT NOT NULL, album TEXT NOT NULL, year TEXT  );")
 c.execute("CREATE TABLE IF NOT EXISTS tracks ( id INTEGER NOT NULL, path TEXT NOT NULL  );")
 cursor = c.cursor()
@@ -52,6 +52,12 @@ def labelCheck(label, tag, f):
 def getYear(artist, album, track, f):
     try:
         print(f"Original Date: {str(f.raw['year'])}")
+        if "promo " or "demo " in album.lower():
+            year = [int(s) for s in album.lower().split() if s.isdigit()]
+            f.raw['year'] = year[0]
+            f.save()
+            print("demo or promo found, year set to ", year[0])
+            return()
         albums = metallum.album_search(str(f['album']), band=str(f['artist']), strict=False)
         album = albums[0].get()
         date = album.date
