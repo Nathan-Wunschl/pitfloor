@@ -27,9 +27,14 @@ Each unique album will have its own entry in this table. It will have an assigne
 Every file that is parsed through the program will be added to this table, and assigned the same ID corrosponding to the album they are on. I did this to make it possible to edit the database entries manually later, allowing you to rerunning the script to reapply any changed values.
 
 ### Installation
-Download the [latest release](github.com/Nathan-Wunschl/pitfloor/releases/latest) (both the Values.json and the main file) and save them to the same directory wherever you would like
+Download the [dist folder](github.com/Nathan-Wunschl/pitfloor/tree/main/dist)
 
-Open a terminal window to the directory you installed the files, and run 
+Open a terminal window to the dist folder
+ex:
+```
+cd dist
+```
+then run
 ```
 chmod +x main
 ```
