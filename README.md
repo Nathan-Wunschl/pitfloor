@@ -14,6 +14,18 @@ I created this script for multiple issues that I have faced with owning my own m
 3. Album names would contain artist name (i.e Condemned - Desecrate the Vile)
 4. Years would be incorrect due to record label release (i.e. 2001 vs 2015)
 
+### Viewing Examples
+For viewing the example database of my personal library, download the [example.db file](https://github.com/Nathan-Wunschl/pitfloor/blob/main/example.db) and upload it to [SQLite Viewer](https://inloop.github.io/sqlite-viewer/). There are two tables that are necessary, which is the **albums** table and the **tracks** table. 
+
+#### Note
+For some tracks, I did have to manually change multiple values outside of the database and the program. There were only two, and they were both New Standard Elite Split-EP releases. This wasn't super difficult thanks to [MusicBrainz Picard](https://picard.musicbrainz.org/), but it was still something I thought I'd mention.
+
+#### Albums Table
+Each unique album will have its own entry in this table. It will have an assigned ID, as well as the name of the artist, album, and the date it was released (if it was not found on [metallum](https://www.metal-archives.com/), it will use the original value).
+
+#### Tracks table
+Every file that is parsed through the program will be added to this table, and assigned the same ID corrosponding to the album they are on. I did this to make it possible to edit the database entries manually later, allowing you to rerunning the script to reapply any changed values.
+
 ### Installation
 Download the [latest release](github.com/Nathan-Wunschl/pitfloor/releases/latest) (both the Values.json and the main file) and save them to the same directory wherever you would like
 
@@ -31,6 +43,9 @@ Once everything is done, return to the directory in a terminal window and run
 ./main
 ```
 This will start the program! 
+
+### Post Run
+I recommend opening up the database file, either in a desktop app or at [SQLite Viewer](https://inloop.github.io/sqlite-viewer/), and double checking any values that may be amiss, I designed the app to reapply all values in the albums table, so if there are any albums with an incorrect date, artist name, or album name, simply change them in the viewer, overwrite the database file to where it was originally, and rerun the script!
 
 ### Troubleshooting
 If you get any errors when the script starts running relating to "sqlite3" or the script finishes immediately, this is an issue with the paths in the json file. Please ensure that your system paths are completely correct and that there is a leading '/' (/users/nathan/test/)
