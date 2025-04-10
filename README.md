@@ -1,7 +1,7 @@
 # Pitfloor
 A metadata fixer for metal music written in python
 
-Currently only working on UNIX systems.
+Current release only working on UNIX systems.
 
 ## Disclamer
 This script changes metadata of files as it goes, so it is possible there will be errors or unwanted changes. I highly recommend you either backup your library before running this, or copy small chuncks of your library at a time to ensure it works as desired.
