@@ -52,11 +52,11 @@ def labelCheck(label, tag, f):
 def getYear(artist, album, track, f):
     try:
         print(f"Original Date: {str(f.raw['year'])}")
-        if "promo " or "demo " in album.lower():
-            year = [int(s) for s in album.lower().split() if s.isdigit()]
+        if "promo " or "demo " in str(album).lower():
+            year = [int(s) for s in str(album).lower().split() if s.isdigit()]
             f.raw['year'] = year[0]
             f.save()
-            print("demo or promo found, year set to ", year[0])
+            print("demo or promo found, year set to ", year[0].strip())
             return()
         albums = metallum.album_search(str(f['album']), band=str(f['artist']), strict=False)
         album = albums[0].get()
