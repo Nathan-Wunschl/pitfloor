@@ -1,6 +1,6 @@
 # Pitfloor
 # Nathan Wunschl
-# v 0.1.0
+# v 0.1.1
 import metallum
 import os
 import music_tag
@@ -52,8 +52,10 @@ def labelCheck(label, tag, f):
 def getYear(artist, album, track, f):
     try:
         print(f"Original Date: {str(f.raw['year'])}")
-        if "promo " or "demo " in str(album).lower():
-            year = [int(s) for s in str(album).lower().split() if s.isdigit()]
+        if "promo " in str(f['album']).lower() or "demo " in str(f['album']).lower():
+            year = [int(s) for s in str(f['album']).lower().split() if s.isdigit()]
+            print("test " + str(f['album']))
+            time.sleep(10)
             f.raw['year'] = year[0]
             f.save()
             print("demo or promo found, year set to ", year[0].strip())
